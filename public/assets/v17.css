@@ -1,0 +1,85 @@
+/* CodeArena v17: student classroom layout and progress/leaderboard polish. */
+.student-classrooms-grid {
+  grid-template-columns: minmax(280px, .72fr) minmax(0, 1.48fr);
+  gap: clamp(20px, 2.1vw, 28px);
+  align-items: start;
+  width: 100%;
+}
+.student-classes-section { min-width: 0; width: 100%; }
+.student-classes-section .section-title { align-items: center; gap: 14px; margin-bottom: 18px; }
+.student-classroom-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 315px), 1fr));
+  align-items: stretch;
+  gap: 16px;
+  width: 100%;
+}
+.student-classroom-card {
+  width: 100%;
+  max-width: 660px;
+  min-width: 0;
+  min-height: 258px;
+  padding: 21px;
+  border-color: #e2e7f1;
+  box-shadow: 0 7px 24px rgba(31, 43, 72, .045);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.student-classroom-card:hover {
+  transform: translateY(-2px);
+  border-color: #d7d1ff;
+  box-shadow: 0 12px 30px rgba(54, 48, 121, .08);
+}
+.student-classroom-card h3 { font-size: 16px; line-height: 1.4; letter-spacing: -.35px; }
+.student-classroom-card .classroom-section-label { overflow-wrap: anywhere; }
+.student-classroom-card .muted { line-height: 1.65; }
+.student-classroom-card .classroom-card-actions { display: flex; flex-wrap: wrap; gap: 9px; }
+.student-classroom-card .classroom-card-actions .button { min-height: 42px; }
+.join-class-panel { border-color: #e2e7f1; box-shadow: 0 7px 24px rgba(31, 43, 72, .045); }
+.join-class-form input { min-height: 47px; }
+.join-class-form .button { min-height: 44px; }
+.student-classroom-icon { box-shadow: inset 0 1px 0 rgba(255,255,255,.85); }
+
+/* A single classroom should use the available track instead of leaving a half-empty grid. */
+.student-classroom-cards > .student-classroom-card:only-child { width: 100%; }
+.student-classroom-cards > .student-classroom-card:only-child { grid-column: 1 / -1; }
+
+/* Make the dashboard pages robust on smaller screens and prevent grid overflow. */
+.leaderboard-hero,
+.leaderboard-stats,
+.leaderboard-podium,
+.v14-progress-summary,
+.v14-skill-grid { min-width: 0; }
+.leaderboard-table-wrap,
+.v14-progress-details .table-wrap { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.leaderboard-table { min-width: 680px; }
+.v14-skill-card,
+.leaderboard-stat,
+.podium-card { min-width: 0; }
+.v14-skill-card h3,
+.podium-card h3 { overflow-wrap: anywhere; }
+
+@media (max-width: 1020px) {
+  .student-classrooms-grid { grid-template-columns: minmax(0, 1fr); }
+  .student-classroom-card { max-width: none; }
+  .student-classroom-cards { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+}
+@media (max-width: 760px) {
+  .student-classroom-cards { grid-template-columns: minmax(0, 1fr); }
+  .student-classroom-card { min-height: 0; padding: 18px; }
+  .student-classes-section .section-title { align-items: flex-start; }
+  .v14-progress-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .v14-skill-grid { grid-template-columns: minmax(0, 1fr); }
+  .leaderboard-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .leaderboard-podium { grid-template-columns: minmax(0, 1fr); }
+  .leaderboard-hero { gap: 18px; }
+}
+@media (max-width: 440px) {
+  .v14-progress-summary,
+  .leaderboard-stats { grid-template-columns: minmax(0, 1fr); }
+  .student-classroom-card .classroom-card-actions .button { width: 100%; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .student-classroom-card { transition: none; }
+  .student-classroom-card:hover { transform: none; }
+}
+.v17-schema-notice { margin: 0 0 18px; border-radius: 13px; line-height: 1.65; }

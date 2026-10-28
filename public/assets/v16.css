@@ -1,0 +1,149 @@
+/* CodeArena v16: responsive navigation system and gradebook picker. */
+:root {
+  --ca-nav-border: #e6e9f2;
+  --ca-nav-ink: #2c3650;
+  --ca-nav-muted: #64708a;
+  --ca-nav-accent: #6254df;
+  --ca-nav-accent-soft: #efedff;
+}
+.ca-nav-v16 {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: clamp(12px, 1.5vw, 24px);
+  min-height: 74px;
+  padding: 10px clamp(16px, 3vw, 48px);
+  border-bottom: 1px solid var(--ca-nav-border);
+  background: rgba(255,255,255,.96);
+  box-shadow: 0 9px 28px rgba(31,41,72,.055);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+.ca-nav-v16 .brand { flex: 0 0 auto; gap: 11px; }
+.ca-nav-v16 .brand-mark { width: 39px; height: 39px; border-radius: 13px; }
+.ca-nav-v16 .brand-wordmark { color: #202840; font-size: 17px; font-weight: 850; letter-spacing: -.65px; }
+.ca-nav-v16 .brand-wordmark small { color: #8991a5; font-size: 8px; letter-spacing: 1.05px; }
+.ca-nav-v16 .ca-navlinks {
+  display: flex; flex: 1 1 auto; align-items: center; justify-content: flex-end; gap: 4px;
+  min-width: 0; overflow: visible; color: var(--ca-nav-muted); font-size: 12px;
+}
+.ca-nav-v16 .ca-navlinks > a:not(.button):not(.nav-signout) {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 39px; padding: 9px 11px;
+  border: 1px solid transparent; border-radius: 10px; color: var(--ca-nav-muted); font-size: 11px;
+  font-weight: 760; line-height: 1.2; white-space: nowrap; transition: color .15s ease, background .15s ease, border-color .15s ease;
+}
+.ca-nav-v16 .ca-navlinks > a:not(.button):not(.nav-signout):hover { color: #5143ca; background: #f5f3ff; border-color: #eeebff; }
+.ca-nav-v16 .ca-navlinks > a.is-active:not(.button),
+.ca-nav-v16 .nav-dropdown.is-active > summary { color: #594bcf; background: var(--ca-nav-accent-soft); border-color: #e4e0ff; }
+.ca-nav-v16 .nav-dropdown { position: relative; flex: 0 0 auto; min-width: max-content; }
+.ca-nav-v16 .nav-dropdown > summary {
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 39px;
+  padding: 9px 11px; border: 1px solid transparent; border-radius: 10px; color: var(--ca-nav-muted);
+  font-size: 11px; font-weight: 760; line-height: 1.2; white-space: nowrap; cursor: pointer; list-style: none;
+  transition: color .15s ease, background .15s ease, border-color .15s ease;
+}
+.ca-nav-v16 .nav-dropdown > summary::-webkit-details-marker { display: none; }
+.ca-nav-v16 .nav-dropdown > summary:hover,
+.ca-nav-v16 .nav-dropdown[open] > summary { color: #5143ca; background: #f5f3ff; border-color: #eeebff; }
+.ca-nav-v16 .nav-chevron { display: inline-block; color: #8a92a5; font-size: 13px; transition: transform .15s ease; }
+.ca-nav-v16 .nav-dropdown[open] .nav-chevron { transform: rotate(180deg); }
+.ca-nav-v16 .nav-dropdown-menu {
+  position: absolute; z-index: 130; top: calc(100% + 8px); right: 0; display: none; min-width: 218px;
+  padding: 7px; border: 1px solid #e6e8f1; border-radius: 14px; background: #fff;
+  box-shadow: 0 18px 45px rgba(27,36,66,.14);
+}
+.ca-nav-v16 .nav-dropdown[open] > .nav-dropdown-menu { display: grid; gap: 3px; }
+.ca-nav-v16 .nav-dropdown-menu a {
+  display: flex; align-items: center; min-height: 39px; padding: 10px 11px; border: 1px solid transparent;
+  border-radius: 9px; color: #58647d; font-size: 11px; font-weight: 700; white-space: nowrap;
+}
+.ca-nav-v16 .nav-dropdown-menu a:hover { border-color: #eeebff; background: #f6f4ff; color: #5143ca; }
+.ca-nav-v16 .nav-dropdown-menu a.is-active { background: #efedff; color: #5546d1; }
+.ca-nav-v16 .nav-join-button { min-height: 39px; margin-left: 4px; padding: 10px 14px; white-space: nowrap; }
+.ca-nav-v16 .nav-account {
+  display: inline-flex; align-items: center; gap: 8px; min-width: 0; margin-left: 6px; padding: 2px 0 2px 12px;
+  border-left: 1px solid #e5e8f1;
+}
+.ca-nav-v16 .nav-account .avatar { display: grid; place-items: center; width: 34px; height: 34px; flex: 0 0 auto; }
+.ca-nav-v16 .nav-account-copy { display: grid; gap: 2px; min-width: 0; max-width: 116px; line-height: 1.25; }
+.ca-nav-v16 .nav-account-copy strong { overflow: hidden; color: #26314b; font-size: 10px; font-weight: 820; text-overflow: ellipsis; white-space: nowrap; }
+.ca-nav-v16 .nav-account-copy small { color: #858da2; font-size: 9px; font-weight: 700; }
+.ca-nav-v16 .nav-signout {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 37px; margin-left: 2px; padding: 9px 11px;
+  border: 1px solid #e2e6ef; border-radius: 10px; background: #fff; color: #68738a; font-size: 10px; font-weight: 760; white-space: nowrap;
+}
+.ca-nav-v16 .nav-signout:hover { border-color: #f1c6ce; background: #fff7f8; color: #b6374b; }
+.ca-nav-v16 .nav-menu-toggle { flex: 0 0 auto; display: none; width: 43px; height: 43px; border: 1px solid #e2e6ef; border-radius: 12px; background: #fff; box-shadow: 0 2px 7px rgba(30,41,67,.035); }
+.ca-nav-v16 .nav-menu-toggle:hover { border-color: #d1cafc; background: #f9f8ff; }
+.ca-nav-v16 .nav-menu-toggle span { transition: transform .16s ease, opacity .16s ease; }
+.ca-nav-v16 .nav-menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.ca-nav-v16 .nav-menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.ca-nav-v16 .nav-menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+.ca-nav-v16 .nav-menu-toggle:focus-visible,
+.ca-nav-v16 .nav-dropdown > summary:focus-visible { outline: 3px solid rgba(98,84,223,.3); outline-offset: 3px; }
+
+/* Direct Gradebook navigation opens a real classroom chooser. */
+.v16-gradebook-picker-hero { margin-bottom: 22px; }
+.v16-gradebook-picker-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; align-items: stretch; }
+.v16-gradebook-picker-card { display: flex; flex-direction: column; gap: 13px; min-width: 0; padding: 21px; }
+.v16-picker-card-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.v16-picker-icon { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #e3defe; border-radius: 13px; background: #efedff; color: #6254df; font-size: 20px; font-weight: 800; }
+.v16-gradebook-picker-card .eyebrow { margin: 0; }
+.v16-gradebook-picker-card h2 { margin: -5px 0 0; font-size: 20px; overflow-wrap: anywhere; }
+.v16-picker-metrics { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px; margin-top: auto; }
+.v16-picker-metrics > span { display: grid; gap: 3px; padding: 12px; border: 1px solid #e9ebf3; border-radius: 11px; background: #fafbfe; }
+.v16-picker-metrics strong { color: #27324c; font-size: 21px; line-height: 1.1; }
+.v16-picker-metrics small { color: #7f899f; font-size: 10px; font-weight: 700; }
+.v16-gradebook-picker-card > .button { width: 100%; margin-top: 3px; }
+.v16-gradebook-picker-empty { display: grid; justify-items: center; gap: 12px; padding: 38px 22px; text-align: center; }
+.v16-gradebook-picker-empty h2 { margin: 0; font-size: 23px; }
+.v16-gradebook-picker-empty p { max-width: 490px; margin: 0 0 5px; }
+
+/* Keep the separate Super Admin side navigation consistent with the shared design system. */
+.admin-app .admin-sidebar { border-right-color: #e5e8f1; background: rgba(255,255,255,.97); }
+.admin-app .admin-nav { gap: 7px; }
+.admin-app .admin-nav a { min-height: 44px; padding: 10px 12px; border-radius: 12px; font-size: 11px; transition: background .15s ease, border-color .15s ease, color .15s ease, transform .15s ease; }
+.admin-app .admin-nav a:hover { transform: translateX(2px); border-color: #ebe8ff; background: #f7f5ff; color: #5546d1; }
+.admin-app .admin-nav a.active { border-color: #e0dcff; background: linear-gradient(100deg,#f0eeff,#f8f7ff); color: #5143c8; }
+.admin-app .admin-nav a:focus-visible { outline: 3px solid rgba(98,84,223,.3); outline-offset: 2px; }
+.admin-app .admin-topbar { border-bottom-color: #e7eaf2; }
+
+@media (max-width: 1250px) {
+  .ca-nav-v16 { gap: 10px; padding-inline: 18px; }
+  .ca-nav-v16 .brand-wordmark { font-size: 16px; }
+  .ca-nav-v16 .ca-navlinks { gap: 2px; }
+  .ca-nav-v16 .ca-navlinks > a:not(.button):not(.nav-signout),
+  .ca-nav-v16 .nav-dropdown > summary { padding-inline: 8px; font-size: 10px; }
+  .ca-nav-v16 .nav-account-copy { max-width: 88px; }
+}
+@media (max-width: 1180px) {
+  .ca-nav-v16 { display: flex; flex-direction: row !important; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding: 10px 18px; }
+  .ca-nav-v16 .nav-menu-toggle { display: inline-flex; margin-left: auto; }
+  .ca-nav-v16 .ca-navlinks { display: none; flex: 0 0 100%; width: 100%; max-width: 100%; flex-direction: column; align-items: stretch; justify-content: flex-start; gap: 4px; padding: 12px 0 6px; border-top: 1px solid #edf0f6; overflow: visible; }
+  .ca-nav-v16 .ca-navlinks.is-open { display: flex; }
+  .ca-nav-v16 .ca-navlinks > a:not(.button):not(.nav-signout) { justify-content: flex-start; width: 100%; min-height: 42px; padding: 11px 13px; font-size: 12px; }
+  .ca-nav-v16 .nav-dropdown { width: 100%; min-width: 0; }
+  .ca-nav-v16 .nav-dropdown > summary { display: flex; justify-content: space-between; width: 100%; min-height: 42px; padding: 11px 13px; font-size: 12px; }
+  .ca-nav-v16 .nav-dropdown-menu { position: static; min-width: 0; width: 100%; margin: 4px 0 5px; padding: 5px 5px 5px 14px; border: 0; border-left: 2px solid #e3defe; border-radius: 0; background: transparent; box-shadow: none; }
+  .ca-nav-v16 .nav-dropdown-menu a { min-height: 40px; padding: 10px 12px; white-space: normal; }
+  .ca-nav-v16 .nav-account { width: 100%; margin: 7px 0 3px; padding: 11px 12px; border: 1px solid #e8eaf2; border-radius: 12px; background: #fafbfe; }
+  .ca-nav-v16 .nav-account-copy { max-width: min(320px, calc(100vw - 145px)); }
+  .ca-nav-v16 .nav-signout { justify-content: center; width: 100%; min-height: 42px; margin: 0; }
+  .ca-nav-v16 .nav-join-button { width: 100%; min-height: 42px; margin: 5px 0 0; }
+  .v16-gradebook-picker-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 640px) {
+  .ca-nav-v16 { padding-inline: 14px; }
+  .ca-nav-v16 .brand-mark { width: 36px; height: 36px; }
+  .ca-nav-v16 .brand-wordmark { font-size: 16px; }
+  .ca-nav-v16 .brand-wordmark small { font-size: 7px; letter-spacing: .7px; }
+  .v16-gradebook-picker-grid { grid-template-columns: minmax(0,1fr); gap: 12px; }
+  .v16-gradebook-picker-card { padding: 17px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ca-nav-v16 *, .admin-app .admin-nav a { transition: none !important; animation: none !important; }
+}
+.ca-nav-v16 .ca-navlinks > a.is-active:not(.button)::after { content: none !important; }

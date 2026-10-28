@@ -1,0 +1,88 @@
+/* CodeArena v23: lesson builder, classroom workflows, feedback, achievements and archive tools */
+.v23-lesson-layout,.v23-class-management-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.2rem;align-items:start}
+.v23-lesson-form,.v23-class-tools{min-width:0}
+.v23-stacked-form{display:grid;gap:1rem}
+.v23-stacked-form label{display:grid;gap:.42rem;font-weight:650;color:var(--ink,#24243a)}
+.v23-stacked-form input:not([type=checkbox]):not([type=file]),.v23-stacked-form select,.v23-stacked-form textarea{width:100%;min-width:0;border:1px solid var(--line,#e3e4ee);border-radius:12px;padding:.78rem .9rem;background:var(--surface,#fff);color:var(--ink,#24243a);font:inherit;box-sizing:border-box}
+.v23-stacked-form input:focus,.v23-stacked-form select:focus,.v23-stacked-form textarea:focus{outline:3px solid rgba(101,84,217,.15);border-color:#6554d9}
+.v23-form-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.v23-lesson-library,.v23-path-cards{display:grid;gap:1rem;align-content:start}
+.v23-lesson-card{display:grid;grid-template-columns:46px minmax(0,1fr);gap:1rem;padding:1.15rem;align-items:start}
+.v23-lesson-card-no,.v23-path-card-icon{width:42px;height:42px;display:grid;place-items:center;flex:0 0 auto;border-radius:13px;background:#efedff;color:#5848c4;font-weight:800}
+.v23-lesson-card-copy{min-width:0}
+.v23-lesson-card-meta,.v23-lesson-card-actions,.v23-archived-actions{display:flex;align-items:center;gap:.65rem;flex-wrap:wrap}
+.v23-lesson-card h3,.v23-announcement-card h3{margin:.45rem 0}
+.v23-lesson-card p{margin:.35rem 0 .85rem;line-height:1.6;color:var(--muted,#666879)}
+.v23-path-cards{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:1rem}
+.v23-path-card{display:flex;flex-direction:column;align-items:flex-start;gap:.65rem;padding:1.35rem;min-height:230px;text-decoration:none;color:inherit;transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
+.v23-path-card:hover{transform:translateY(-2px);border-color:#c7c0fb;box-shadow:0 12px 28px rgba(35,28,90,.08)}
+.v23-path-card h2{font-size:1.16rem;margin:0;line-height:1.3}
+.v23-path-card p{margin:0;line-height:1.55;color:var(--muted,#666879);flex:1}
+.v23-path-card strong{color:#5c4bd0;margin-top:.35rem}
+.v23-lesson-progress{display:grid;grid-template-columns:minmax(170px,.7fr) minmax(180px,1.3fr);align-items:center;gap:1rem;margin:1rem 0 1.25rem;padding:1.15rem 1.3rem}
+.v23-lesson-progress p{margin:.25rem 0 0}
+.v23-lesson-student-list{display:grid;gap:.75rem}
+.v23-student-lesson-card{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:1rem;align-items:center;padding:1rem 1.15rem}
+.v23-student-lesson-card h2{font-size:1.05rem;margin:.45rem 0 .2rem}
+.v23-student-lesson-card p{margin:0;color:var(--muted,#666879);line-height:1.5}
+.v23-lesson-card-actions{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap}
+.v23-lesson-reading{padding:clamp(1.1rem,3vw,2.1rem);max-width:940px;margin-inline:auto}
+.v23-lesson-reading-content{font-size:1.02rem;line-height:1.85;white-space:normal;overflow-wrap:anywhere}
+.v23-example-block{margin:1.5rem 0;border:1px solid var(--line,#e3e4ee);border-radius:14px;overflow:hidden;background:#171827;color:#f4f4fa}
+.v23-example-header{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.8rem 1rem;background:#222337;border-bottom:1px solid #37384b}
+.v23-example-block pre{padding:1.1rem;overflow:auto;margin:0;line-height:1.65;tab-size:4}
+.v23-example-block code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.93rem}
+.v23-lesson-hints{padding:1rem;border:1px solid var(--line,#e3e4ee);border-radius:12px;background:var(--surface-soft,#f8f8fc);margin:1rem 0}
+.v23-lesson-hints summary{font-weight:750;cursor:pointer}
+.v23-lesson-hints div{margin-top:.8rem;line-height:1.7}
+.v23-lesson-finish{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem;margin-top:1.4rem;border-radius:14px;background:#f0f8f3;border:1px solid #c9ebd5}
+.v23-lesson-finish p{margin:.2rem 0 0}
+.v23-feedback-panel{margin-top:1.25rem;border:1px solid #dcd6ff;background:#faf9ff}
+.v23-feedback-panel h2{margin-top:0}
+.v23-feedback-existing{border:1px solid var(--line,#e3e4ee);border-radius:12px;padding:1rem;margin-bottom:1rem;background:#fff}
+.v23-feedback-existing.approved{border-color:#b8e5c8;background:#f2fbf5}
+.v23-feedback-existing.needs_revision{border-color:#f1d1a4;background:#fffaf2}
+.v23-feedback-existing p{line-height:1.6;margin:.6rem 0 0;white-space:pre-wrap}
+.v23-submission-history{display:grid;gap:.8rem}
+.v23-submission-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1rem;padding:1rem;align-items:center}
+.v23-submission-row h3{margin:0 0 .3rem;font-size:1rem}
+.v23-submission-score{font-size:1.15rem;font-weight:850;white-space:nowrap}
+.v23-student-feedback{margin-top:.8rem;padding:.85rem;border-radius:10px;background:#f8f7ff;border-left:3px solid #6554d9}
+.v23-achievement-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;margin:1.25rem 0}
+.v23-achievement-stats article{display:grid;gap:.45rem;padding:1.2rem}
+.v23-achievement-stats article span{font-size:.9rem;color:var(--muted,#666879)}
+.v23-achievement-stats article strong{font-size:1.8rem;letter-spacing:-.04em}
+.v23-badge-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:1rem}
+.v23-badge-card{display:grid;grid-template-columns:54px minmax(0,1fr);gap:1rem;padding:1.2rem}
+.v23-badge-card.locked{opacity:.76}
+.v23-badge-icon{display:grid;place-items:center;width:50px;height:50px;border-radius:15px;background:#f1edff;font-size:1.7rem}
+.v23-badge-card h2{font-size:1.06rem;margin:.55rem 0 .3rem}
+.v23-badge-card p{margin:0 0 .5rem;color:var(--muted,#666879);line-height:1.55}
+.v23-student-announcements{margin:1rem 0 1.5rem;padding:1.2rem}
+.v23-announcement-list{display:grid;gap:.75rem}
+.v23-announcement-card{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;padding:1rem;border:1px solid var(--line,#e3e4ee);border-radius:12px;background:var(--surface,#fff)}
+.v23-announcement-card p{white-space:normal;overflow-wrap:anywhere;line-height:1.65;margin:.55rem 0 0}
+.v23-class-tools{margin-top:1.2rem;padding:clamp(1rem,2.8vw,1.5rem)}
+.v23-inline-form{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1rem;align-items:end}
+.v23-bulk-exercise-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:.6rem}
+.v23-bulk-exercise-option{display:flex!important;align-items:flex-start;gap:.7rem;padding:.85rem;border:1px solid var(--line,#e3e4ee);border-radius:12px;background:#fff;font-weight:400!important;cursor:pointer}
+.v23-bulk-exercise-option input{margin-top:.2rem;accent-color:#6554d9}
+.v23-bulk-exercise-option span{display:grid;gap:.25rem}
+.v23-bulk-exercise-option small{color:var(--muted,#666879)}
+.v23-class-management-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.v23-class-management-grid .v23-stacked-form{border:1px solid var(--line,#e3e4ee);border-radius:14px;padding:1rem;min-width:0}
+.v23-class-management-grid h3{margin:0 0 .2rem}
+.v23-archived-classrooms{margin-top:1.5rem}
+.v23-archived-list{display:grid;gap:.75rem}
+.v23-archived-class-card{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.15rem}
+.v23-archived-class-card p{margin:.25rem 0 0}
+.v23-archived-actions{justify-content:flex-end}
+.v23-account-status-cell{display:grid;gap:.45rem;justify-items:start}
+@media(max-width:900px){.v23-lesson-layout{grid-template-columns:1fr}.v23-achievement-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){.v23-form-two,.v23-class-management-grid,.v23-inline-form{grid-template-columns:1fr}.v23-student-lesson-card{grid-template-columns:42px minmax(0,1fr)}.v23-student-lesson-card>.v23-lesson-card-actions{grid-column:2;justify-content:flex-start}.v23-lesson-progress{grid-template-columns:1fr}.v23-lesson-finish,.v23-announcement-card,.v23-archived-class-card{align-items:stretch;flex-direction:column}.v23-archived-actions{justify-content:flex-start}.v23-achievement-stats{gap:.65rem}.v23-achievement-stats article{padding:.9rem}.v23-achievement-stats article strong{font-size:1.45rem}.v23-submission-row{grid-template-columns:1fr}.v23-submission-score{justify-self:start}}
+@media(prefers-reduced-motion:reduce){.v23-path-card{transition:none}.v23-path-card:hover{transform:none}}
+
+/* Archived classroom and read-only state notices */
+.alert.warning{border-color:#efd59e;background:#fff8e8;color:#835b13}
+.alert.warning p{margin:.35rem 0 .75rem;line-height:1.55}
+.alert.warning .button{display:inline-flex}

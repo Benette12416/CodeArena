@@ -1,0 +1,6 @@
+/* CodeArena v21 HTML/CSS learning project preview */
+.v21-html-preview-wrap { margin: 16px 0; border: 1px solid var(--line, #dfe4ef); border-radius: 14px; overflow: hidden; background: #fff; }
+.v21-html-preview-wrap iframe { width: 100%; min-height: 360px; display: block; border: 0; background: #fff; }
+.v21-complete-form { display:flex; flex-wrap:wrap; align-items:center; gap:10px; padding:14px; margin:12px 0; border:1px solid var(--line, #dfe4ef); border-radius:12px; background:var(--surface-soft, #f8f9fd); }
+.v21-complete-form .field-hint { flex-basis:100%; margin:0; }
+.v21-complete-form button[disabled] { opacity:.8; cursor:default; }

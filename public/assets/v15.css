@@ -1,0 +1,176 @@
+/* CodeArena v15: navigation, teaching workflow, analytics, version history, and operations. */
+:root {
+  --ca-nav-height: 76px;
+  --ca-nav-shadow: 0 8px 28px rgba(31, 41, 72, .055);
+}
+body { background: var(--ca-canvas, var(--bg, #f6f8fc)); }
+.ca-nav {
+  position: sticky; top: 0; z-index: 100; min-height: var(--ca-nav-height);
+  width: 100%; padding: 10px max(24px, calc((100vw - 1440px) / 2));
+  gap: 20px; background: rgba(255,255,255,.94); border-bottom: 1px solid #e6e9f3;
+  box-shadow: var(--ca-nav-shadow); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+}
+.ca-nav .brand { gap: 11px; flex: 0 0 auto; }
+.ca-nav .brand-mark { width: 39px; height: 39px; border-radius: 13px; font-size: 14px; }
+.brand-wordmark { display: grid; gap: 1px; line-height: 1.1; }
+.brand-wordmark small { color: #858da2; font-size: 8px; line-height: 1.4; letter-spacing: 1.15px; font-weight: 800; }
+.ca-navlinks { display: flex; align-items: center; justify-content: flex-end; gap: 4px; flex: 1 1 auto; overflow: visible; }
+.ca-navlinks > a:not(.button):not(.nav-signout) {
+  display: inline-flex; align-items: center; min-height: 39px; padding: 9px 11px; border-radius: 10px;
+  color: #606b84; font-size: 11px; font-weight: 720; transition: color .15s ease, background .15s ease;
+}
+.ca-navlinks > a:not(.button):not(.nav-signout):hover { background: #f3f2ff; color: #5143ca; }
+.ca-navlinks > a.is-active:not(.button) { background: #efedff; color: #594bcf; }
+.ca-navlinks .nav-staff-link { color: #58657d !important; }
+.ca-navlinks .nav-join-button { min-height: 39px; padding: 10px 14px; margin-left: 3px; white-space: nowrap; }
+.nav-account { display: inline-flex; align-items: center; min-width: 0; gap: 8px; margin-left: 8px; padding: 2px 0 2px 13px; border-left: 1px solid #e5e8f1; }
+.nav-account .avatar { width: 34px; height: 34px; }
+.nav-account-copy { display: grid; min-width: 0; max-width: 125px; line-height: 1.3; }
+.nav-account-copy strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #26314b; font-size: 10px; font-weight: 800; }
+.nav-account-copy small { color: #858da2; font-size: 9px; font-weight: 700; }
+.ca-navlinks .nav-signout { display: inline-flex; align-items: center; min-height: 37px; padding: 9px 11px; border: 1px solid #e2e6ef; border-radius: 10px; color: #68738a; background: #fff; font-size: 10px; font-weight: 750; white-space: nowrap; }
+.ca-navlinks .nav-signout:hover { border-color: #f1c6ce; color: #b6374b; background: #fff7f8; }
+.nav-menu-toggle { display: none; align-items: center; justify-content: center; flex-direction: column; gap: 4px; width: 42px; height: 42px; padding: 0; border: 1px solid #e4e7f0; border-radius: 12px; background: #fff; cursor: pointer; }
+.nav-menu-toggle span { display: block; width: 17px; height: 2px; border-radius: 2px; background: #4e5872; }
+.ca-footer { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 26px; margin-top: 14px; padding: 26px max(24px, calc((100vw - 1200px) / 2)) 32px; border-top: 1px solid #e5e8f1; background: #fff; }
+.footer-brand { display: inline-flex; align-items: center; gap: 10px; color: #202840; font-weight: 800; font-size: 13px; }
+.footer-brand > span:last-child { display: grid; gap: 2px; }
+.footer-brand small { color: #8991a3; font-size: 9px; font-weight: 600; }
+.footer-tagline { color: #8991a3; font-size: 11px; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 14px; margin-left: auto; }
+.footer-links a { color: #68738a; font-size: 10px; font-weight: 700; }
+.footer-links a:hover { color: #6254df; }
+.footer-copy { color: #98a0b0; font-size: 10px; white-space: nowrap; }
+
+/* Higher-quality CREATE · ASSIGN · REVIEW workflow card. */
+.teacher-workflow-card { position: relative; align-self: stretch; min-width: 0; overflow: hidden; padding: 22px; border: 1px solid #e3e4f6; border-radius: 22px; background: linear-gradient(150deg, #fff 0%, #f8f7ff 72%, #f2fbfa 100%); box-shadow: 0 18px 50px rgba(65, 64, 125, .08); }
+.teacher-workflow-card::before { content: ""; position: absolute; top: -80px; right: -85px; width: 210px; height: 210px; border-radius: 50%; background: radial-gradient(circle, rgba(111,98,234,.15), transparent 68%); pointer-events: none; }
+.teacher-workflow-head { position: relative; display: flex; align-items: center; gap: 12px; padding-bottom: 17px; border-bottom: 1px solid #e8e8f4; }
+.teacher-workflow-command { display: grid; flex: 0 0 44px; width: 44px; height: 44px; place-items: center; border: 1px solid #e2defd; border-radius: 14px; background: #efedff; color: #6254df; font-size: 22px; font-weight: 800; box-shadow: 0 5px 12px rgba(98,84,223,.08); }
+.teacher-workflow-head > div { display: grid; gap: 4px; }
+.teacher-workflow-kicker { color: #6254df; font-size: 8px; line-height: 1.4; font-weight: 900; letter-spacing: 1.1px; }
+.teacher-workflow-head strong { color: #222944; font-size: 15px; letter-spacing: -.3px; }
+.teacher-workflow-head small:not(.teacher-workflow-kicker) { color: #858da2; font-size: 10px; line-height: 1.5; }
+.teacher-workflow-steps { position: relative; display: grid; gap: 9px; padding-top: 14px; }
+.teacher-workflow-step { display: grid; grid-template-columns: 42px minmax(0,1fr) 28px; align-items: center; gap: 12px; padding: 12px 13px; border: 1px solid #eaebf4; border-radius: 14px; background: rgba(255,255,255,.88); color: inherit; text-decoration: none; transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease; }
+.teacher-workflow-step:hover { transform: translateY(-2px); border-color: #d5d1fc; box-shadow: 0 8px 20px rgba(50,53,100,.06); }
+.teacher-workflow-step-icon { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 12px; font-size: 16px; font-weight: 850; }
+.teacher-workflow-step-create .teacher-workflow-step-icon { background: #efedff; color: #6254df; }
+.teacher-workflow-step-assign .teacher-workflow-step-icon { background: #e3f8f4; color: #0d857c; }
+.teacher-workflow-step-review .teacher-workflow-step-icon { background: #fff2df; color: #ac6b11; }
+.teacher-workflow-step-copy { display: grid; min-width: 0; gap: 3px; }
+.teacher-workflow-step-copy strong { color: #28314b; font-size: 11px; font-weight: 850; letter-spacing: .65px; }
+.teacher-workflow-step-copy small { color: #7e879c; font-size: 9px; line-height: 1.5; }
+.teacher-workflow-step-arrow { display: grid; place-items: center; width: 27px; height: 27px; border-radius: 9px; background: #f4f5fa; color: #69738b; font-size: 13px; font-weight: 800; }
+.teacher-workflow-step:hover .teacher-workflow-step-arrow { background: #efedff; color: #6254df; }
+.teacher-workflow-caption { margin: 13px 2px 0; color: #969db0; font-size: 9px; line-height: 1.6; }
+
+/* Teacher analytics dashboard. */
+.v15-analytics-hero { margin-bottom: 22px; }
+.v15-analytics-summary { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 14px; margin: 20px 0 24px; }
+.v15-analytics-stat { display: grid; gap: 7px; padding: 19px; min-width: 0; }
+.v15-analytics-stat small { color: #7d879b; font-size: 10px; font-weight: 750; }
+.v15-analytics-stat strong { color: #222943; font-size: clamp(22px,2vw,30px); line-height: 1.2; letter-spacing: -1px; }
+.v15-analytics-stat span { color: #858da2; font-size: 10px; }
+.v15-analytics-grid { display: grid; grid-template-columns: minmax(0,1.3fr) minmax(300px,.7fr); gap: 18px; align-items: start; }
+.v15-analytics-panel { min-width: 0; padding: 21px; }
+.v15-analytics-panel h2 { margin: 0 0 4px; font-size: 19px; }
+.v15-analytics-panel .panel-subtitle { margin: 0 0 18px; color: #838ca1; font-size: 11px; }
+.v15-day-bars { display: grid; grid-template-columns: repeat(14,minmax(0,1fr)); align-items: end; gap: 8px; min-height: 185px; padding-top: 14px; border-bottom: 1px solid #e8ebf3; }
+.v15-day-bar { display: grid; grid-template-rows: minmax(1px,1fr) auto; align-items: end; gap: 8px; height: 170px; min-width: 0; text-align: center; }
+.v15-day-bar-track { display: flex; align-items: end; height: 140px; border-radius: 7px 7px 3px 3px; background: #f4f5fb; overflow: hidden; }
+.v15-day-bar-fill { width: 100%; min-height: 3px; border-radius: 7px 7px 3px 3px; background: linear-gradient(180deg,#9388fa,#6254df); }
+.v15-day-bar time { color: #929aad; font-size: 8px; white-space: nowrap; }
+.v15-topic-list { display: grid; gap: 14px; }
+.v15-topic-row { display: grid; gap: 6px; }
+.v15-topic-label { display: flex; justify-content: space-between; gap: 12px; font-size: 10px; }
+.v15-topic-label strong { color: #333c55; overflow-wrap: anywhere; }
+.v15-topic-label span { color: #788299; white-space: nowrap; }
+.v15-topic-track { height: 7px; border-radius: 100px; background: #edf0f6; overflow: hidden; }
+.v15-topic-fill { height: 100%; border-radius: inherit; background: linear-gradient(90deg,#6556dd,#5b9edb); }
+.v15-analytics-table { margin-top: 16px; }
+.v15-analytics-table table { width: 100%; }
+.v15-analytics-table td,.v15-analytics-table th { padding: 11px 9px; }
+.v15-analytics-below { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; margin-top: 18px; }
+.v15-score-bars { display: grid; gap: 13px; }
+.v15-score-row { display: grid; grid-template-columns: 88px minmax(0,1fr) 40px; align-items: center; gap: 10px; font-size: 10px; }
+.v15-score-row .bar { height: 9px; background: #edf0f6; border-radius: 100px; overflow: hidden; }
+.v15-score-row .bar span { display: block; height: 100%; border-radius: inherit; background: #6254df; }
+.v15-score-row .bar-label { color: #7f879b; }
+.v15-score-row strong { text-align: right; color: #414b65; }
+.v15-analytics-empty { display: grid; place-items: center; text-align: center; padding: 30px 15px; border: 1px dashed #dfe3ef; border-radius: 14px; color: #8a93a6; font-size: 11px; }
+
+/* Exercise version timeline. */
+.v15-history-hero { margin-bottom: 22px; }
+.v15-history-title { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 17px; }
+.v15-version-list { padding: 22px; }
+.v15-version-timeline { display: grid; gap: 12px; }
+.v15-version-card { display: grid; grid-template-columns: 43px minmax(0,1fr); gap: 13px; padding: 17px; border: 1px solid #e6e9f2; border-radius: 15px; background: #fff; }
+.v15-version-icon { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 13px; background: #f0eeff; color: #6254df; font-size: 14px; font-weight: 850; }
+.v15-version-body { min-width: 0; }
+.v15-version-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 18px; margin-bottom: 12px; }
+.v15-version-head strong { color: #26304b; font-size: 13px; }
+.v15-version-head p { margin: 4px 0 0; font-size: 10px; }
+.v15-version-head time { color: #858da2; font-size: 10px; white-space: nowrap; }
+.v15-current-version-label { display: inline-flex; padding: 7px 10px; border-radius: 8px; background: #e7f8ee; color: #168253; font-size: 10px; font-weight: 800; }
+.v15-version-restore { display: flex; flex-wrap: wrap; gap: 9px; align-items: center; }
+.v15-version-restore small { color: #9299aa; font-size: 10px; }
+
+/* Operational health checks and backup documentation. */
+.v15-health-checks { display: grid; gap: 10px; }
+.v15-health-check { display: flex; align-items: flex-start; gap: 10px; padding: 12px; border: 1px solid #e8eaf2; border-radius: 12px; background: #fff; }
+.v15-health-check .status { flex: 0 0 auto; font-size: 10px; font-weight: 850; }
+.v15-health-check .status.ok { color: #168253; }
+.v15-health-check .status.warn { color: #a76a0d; }
+.v15-health-check .status.bad { color: #c53d52; }
+.v15-health-check div { min-width: 0; display: grid; gap: 3px; }
+.v15-health-check strong { font-size: 11px; }
+.v15-health-check small { color: #828ba0; font-size: 10px; line-height: 1.6; }
+
+@media (max-width: 1180px) {
+  .ca-nav { gap: 12px; padding-inline: 20px; }
+  .ca-navlinks { gap: 2px; }
+  .ca-navlinks > a:not(.button):not(.nav-signout) { padding-inline: 8px; font-size: 10px; }
+  .nav-account-copy { max-width: 90px; }
+  .v15-analytics-summary { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 980px) {
+  .ca-nav { display: flex; flex-wrap: wrap; justify-content: space-between; padding: 10px 18px; }
+  .nav-menu-toggle { display: inline-flex; margin-left: auto; }
+  .ca-navlinks { display: none; flex: 0 0 100%; width: 100%; flex-direction: column; align-items: stretch; gap: 4px; padding: 10px 0 7px; border-top: 1px solid #edf0f6; }
+  .ca-navlinks.is-open { display: flex; }
+  .ca-navlinks > a:not(.button):not(.nav-signout) { width: 100%; min-height: 42px; padding: 11px 13px; font-size: 12px; }
+  .ca-navlinks .nav-join-button { margin: 5px 0 0; }
+  .ca-navlinks .nav-account { margin: 7px 0 3px; padding: 11px 12px; border: 1px solid #e8eaf2; border-radius: 12px; background: #fafbfe; }
+  .ca-navlinks .nav-account-copy { max-width: 220px; }
+  .ca-navlinks .nav-signout { justify-content: center; }
+  .ca-footer { padding: 24px 20px 28px; }
+  .footer-links { margin-left: 0; }
+  .teacher-workflow-card { padding: 18px; }
+  .v15-analytics-grid,.v15-analytics-below { grid-template-columns: minmax(0,1fr); }
+}
+@media (max-width: 640px) {
+  .ca-nav { padding-inline: 14px; }
+  .brand-wordmark small { letter-spacing: .7px; }
+  .container { width: min(100% - 28px, var(--content)); padding-top: 25px; }
+  .ca-footer { gap: 14px; padding-inline: 14px; }
+  .footer-tagline { flex-basis: 100%; }
+  .footer-links { gap: 12px; }
+  .teacher-workflow-card { border-radius: 17px; padding: 15px; }
+  .teacher-workflow-head strong { font-size: 13px; }
+  .teacher-workflow-step { grid-template-columns: 36px minmax(0,1fr) 25px; gap: 9px; padding: 10px; }
+  .teacher-workflow-step-icon { width: 36px; height: 36px; }
+  .teacher-workflow-step-copy small { font-size: 9px; }
+  .v15-analytics-summary { gap: 9px; }
+  .v15-analytics-stat { padding: 14px; }
+  .v15-analytics-panel,.v15-version-list { padding: 14px; }
+  .v15-day-bars { gap: 4px; }
+  .v15-day-bar time { font-size: 7px; }
+  .v15-version-card { grid-template-columns: 34px minmax(0,1fr); gap: 9px; padding: 12px; }
+  .v15-version-icon { width: 32px; height: 32px; border-radius: 10px; }
+  .v15-version-head { flex-direction: column; gap: 5px; }
+  .v15-score-row { grid-template-columns: 75px minmax(0,1fr) 28px; gap: 7px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .teacher-workflow-step, .ca-navlinks a { transition: none !important; }
+}
